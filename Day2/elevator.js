@@ -45,7 +45,7 @@ elevator.on('ding', () => {
 });
 
 elevator.on('arrived', () => {
-	console.log('You have arrived at floor', pushed, '!');
+	console.log('You have arrived at floor', pushed + '!');
 	elevator.emit('openDoor');
 });
 
