@@ -13,12 +13,12 @@
 
 			<md-input-container style="width: 100%;">
 				<label>Username</label>
-				<input type="text" />
+				<input type="text" ng-model="$ctrl.username"/>
 			</md-input-container>
 
 			<md-input-container style="width: 100%;">
 				<label>Password</label>
-				<input type="password" />
+				<input type="password" ng-model="$ctrl.password"/>
 			</md-input-container>
 
 			<md-button type="submit" class="md-raised md-primary" ng-click="$ctrl.login()">login</md-button>
