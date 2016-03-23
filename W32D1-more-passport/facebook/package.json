@@ -1,0 +1,20 @@
+{
+  "name": "w31d5-passport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "dependencies": {
+    "angular": "^1.5.1",
+    "angular-animate": "^1.5.1",
+    "angular-aria": "^1.5.1",
+    "angular-material": "^1.0.6",
+    "angular-messages": "^1.5.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
