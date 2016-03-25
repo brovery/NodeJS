@@ -1,0 +1,38 @@
+node_modules/
+bower_components/
+
+.bower-cache
+.bower-registry
+.bower-tmp
+.bowerrc
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+
+### Eclipse ###
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.classpath
+
+
+### Intellij ###
+*.iml
+.idea/
+out/
