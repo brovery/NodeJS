@@ -6,5 +6,10 @@
     "express": "^4.13.4",
     "socket.io": "^1.4.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2"
+  }
 }
