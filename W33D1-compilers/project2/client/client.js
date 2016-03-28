@@ -1,6 +1,6 @@
 'use strict';
 
-var socket = io.connect('localhost:3000');
+var socket = io.connect('http://localhost:3000');
 
 // Keep track of people; could also be an array
 var people = {};
@@ -24,11 +24,6 @@ socket.on('clientmousemove', function(data) {
 	people[data.id] = data;
 });
 
-socket.on('playerleft', function(data) {
-	console.log(data.id);
-	delete people[data.id];
-	console.log(people);
-});
 
 // setup canvas for drawing
 var canvas = document.getElementById("myCanvas");

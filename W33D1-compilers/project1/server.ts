@@ -1,10 +1,11 @@
-var express = require('express');
-var http = require('http');
+import express = require('express');
+import http = require('http');
 var app = express();
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+import Io = require('socket.io');//.listen(server);
+var io = Io.listen(server);
 
-var bodyParser = require('body-parser');
+import bodyParser = require('body-parser');
 
 // Configure for parsing JSON
 app.use(bodyParser.urlencoded({	extended: true }));

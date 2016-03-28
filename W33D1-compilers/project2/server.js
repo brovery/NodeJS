@@ -3,6 +3,7 @@ var http = require('http');
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var port = process.argv[2];
 
 var bodyParser = require('body-parser');
 
@@ -33,14 +34,9 @@ io.on('connection', function(socket) {
 		// socket.emit('clientmousemove', data); // Tell only the sender of this event
 		// socket.broadcast.emit('clientmousemove', data); // tell everyone but sender
 	});
-
-	socket.on('disconnect', function() {
-		var playerid = socket.id.slice(2);
-		io.sockets.emit('playerleft', {id: playerid});
-	});
 });
 
-var port = 3000;
+// var port = 3000;
 server.listen(port, function() {
 	console.log('server started on port ' + port);
 });
