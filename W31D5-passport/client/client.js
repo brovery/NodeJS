@@ -18,4 +18,4 @@ LoginCtrl.prototype.login = function() {
 	}).catch(() => {
 		console.log('login error');
 	});
-}
+};
