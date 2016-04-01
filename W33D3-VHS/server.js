@@ -17,18 +17,21 @@ fs.readFile("movies.json", 'utf8', (err, data) => {
 });
 
 // List all movies.
-app.get('/movies', function (req, res) {
+app.get('/api/movies', function (req, res) {
+    console.log("movies searched.");
     res.send(movies.movies);
+    
 });
 
 // Add a movie.
-app.get('/addmovie', function(req, res) {
+app.post('/api/addmovie', function(req, res) {
     var newmovie = {
-        "name": req.query.name,
-        "year": req.query.year
+        "name": req.body.title,
+        "year": req.body.year,
+        "checkedout": false
     };
     movies.movies.push(newmovie);
-    console.log(movies);
+    console.log(newmovie);
 
     fs.writeFile('movies.json', JSON.stringify(movies), (err) => {
         if (err) res.send("Unable to add movie!");
@@ -37,7 +40,7 @@ app.get('/addmovie', function(req, res) {
 });
 
 // Remove a movie.
-app.get('/removemovie', function(req, res) {
+app.get('/api/removemovie', function(req, res) {
     var oldmovie = {
         "name": req.query.name,
         "year": req.query.year
@@ -90,7 +93,7 @@ app.get('/editmovie', function(req, res) {
 });
 
 // Search and list matches on movie titles.
-app.get('/searchmovie', function(req, res) {
+app.get('/api/searchmovie', function(req, res) {
     var returnmovies = [];
     var patt = new RegExp(req.query.name, 'gi');
 
@@ -102,6 +105,30 @@ app.get('/searchmovie', function(req, res) {
     }
     res.send(returnmovies);
 });
+
+// check a movie in/out.
+app.get('/api/checkout', function(req, res) {
+    var moviefound = false;
+    
+    
+    for (var i = 0; i < movies.movies.length; i++) {
+        if (movies.movies[i].name == req.query.name && movies.movies[i].year == req.query.year) {
+            moviefound = true;
+            console.log("checking out");
+            movies.movies[i].checkedout = !movies.movies[i].checkedout;
+
+            fs.writeFile('movies.json', JSON.stringify(movies), (err) => {
+                if (err) res.send("Unable to check out movie!");
+                else res.send("Movie checked out!");
+            });
+        }
+    }
+
+    if (moviefound === false) {
+        res.send("Unable to locate movie.");
+    }
+});
+
 
 var port = 3000;
 app.listen(port, function() {
